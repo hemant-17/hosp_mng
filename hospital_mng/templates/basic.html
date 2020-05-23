@@ -1,21 +1,78 @@
 <!doctype html>
-<html lang="en">
-  <head>  {% block head %}
-    {% endblock %}
-    <!-- Required meta tags -->
+<html class="no-js" lang="zxx">
+{% load static %}
+<head>
+
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title> {% block title %}
-        {% endblock %}</title>
-  </head>
-  <body>
+<!-- <link rel="manifest" href="site.webmanifest"> -->
+<link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
+<!-- Place favicon.ico in the root directory -->
+
+<!-- CSS here -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+<link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+<link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+<link rel="stylesheet" href="{% static 'css/gijgo.css' %}">
+<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+<link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% block head %} {% endblock %}
+
+</head>
+
+<body>
+
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- header-start -->
+    <header>
+        <div class="header-area ">
+            <div class="header-top_area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-md-6 ">
+                            <div class="social_media_links">
+                                <a href="#">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6">
+                            <div class="short_contact_list">
+                                <ul>
+                                    <li><a href="#"> <i class="fa fa-envelope"></i> info@docmed.com</a></li>
+                                    <li><a href="#"> <i class="fa fa-phone"></i> 160160</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a href="/">
+            <img src="{% static 'img/logo.png' %}" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-
+
+controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -26,27 +83,61 @@
             </li>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">About us</a>
+            <a class="nav-link" href="/about">About us</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="/contact">Contact</a>
             {% if user.is_authenticated %}
 
 
 
+
+
+
+
+            {% if context == 'Patient'  %}
+
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="/appointment/{{ user.id }}">Your Appointment's</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mx-2" href="/Payment/{{ user.id }}">Invoice & Payments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mx-2" href="/profile/{{ user.id }}">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-2" href="/medical/{{ user.id }}">Medical history</a>
+              </li>
+
+
+
+
+            {% elif context == 'Doctor' %}
+            <li class="nav-item">
+                <a class="nav-link mx-2" href="/Profile/{{ user.id }}">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-2" href="/patient/{{ user.id }}">Appointments</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-2" href="/prescribe/{{ user.id }}">Prescriptions</a>
+              </li>
+              {% elif context == 'Receptionist' %}
+              <li class="nav-item">
+                <a class="nav-link mx-2" href="/dashboard/{{ user.id }}">Dashboard</a>
+              </li>
+              {% elif context == 'HR' %}
+              <li class="nav-item">
+                <a class="nav-link mx-2" href="/dashboard1/{{ user.id }}">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-2" href="/hospital_acc/{{ user.id }}">Accounting</a>
+              </li>
+            {% endif %}
             <li class="nav-item text-right">
-              <a class="nav-link mx-2 " href="/logout">Logout</a>
-            </li>
-
-             <!--Example single danger button-->
-
-
-            <li class="nav-item">
-              <a class="nav-link mx-2" href="/appointment/{{ user.id }}">Appointment</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link mx-2" href="/Payment/{{ user.id }}">Payment</a>
-            </li>
+                <a class="nav-link mx-2 " href="/logout"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button></a>
+              </li>
           </ul>
             {% else %}
 
@@ -56,25 +147,62 @@
               <li class="nav-item">
                   <a class="nav-link" href="/login">Login</a>
                 </li>
+
             {% endif %}
 
 
 
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+
         </div>
       </nav>
-      {% block body %}
-      {% endblock %}
+    <!-- header-end -->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous" >
+     <!-- JS here -->
+     <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+     <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+     <script src="{% static 'js/popper.min.js' %}"></script>
+     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+     <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+     <script src="{% static 'js/ajax-form.js' %}"></script>
+     <script src="{% static 'js/waypoints.min.js' %}"></script>
+     <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+     <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+     <script src="{% static 'js/scrollIt.js' %}"></script>
+     <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+     <script src="{% static 'js/wow.min.js' %}"></script>
+     <script src="{% static 'js/nice-select.min.js' %}"></script>
+     <script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+     <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+     <script src="{% static 'js/plugins.js' %}"></script>
+     <script src="{% static 'js/gijgo.min.js' %}"></script>
+     <!--contact js-->
+     <script src="{% static 'js/contact.js' %}"></script>
+     <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+     <script src="{% static 'js/jquery.form.js' %}"></script>
+     <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+     <script src="{% static 'js/mail-script.js' %}"></script>
+
+     <script src="{% static 'js/main.js' %}"></script>
+     <script>
+         $('#datepicker').datepicker({
+             iconsLibrary: 'fontawesome',
+             icons: {
+                 rightIcon: '<span class="fa fa-caret-down"></span>'
+             }
+         });
+         $('#datepicker2').datepicker({
+             iconsLibrary: 'fontawesome',
+             icons: {
+                 rightIcon: '<span class="fa fa-caret-down"></span>'
+             }
+
+         });
+     $(document).ready(function() {
+     $('.js-example-basic-multiple').select2();
+ });
      </script>
-  </body>
+{% block body %} {% endblock %}
+</body>
 </html>

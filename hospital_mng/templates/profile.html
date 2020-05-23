@@ -1,0 +1,18 @@
+{% extends 'basic.html' %}
+
+{% block title %} Profile {% endblock %}
+{% block head %}
+
+{% endblock %}
+{% block body %}
+<div class="container mt-4 mx-3 align-middle">
+<form action="#" method="POST">{% csrf_token %}
+    <h4>Hello , {{user.username }}</h4>
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_ul }}
+
+    <input class="btn btn-primary" type="submit" name="Update Information">
+    </form>
+
+{% endblock %}

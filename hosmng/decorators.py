@@ -24,10 +24,10 @@ def allowed_users(allowed_roles=[]):
             #     group= request.user.groups.all()[0].name
 
             if group in allowed_roles:
-                return view_func(request,*args,**kwargs)
+                return view_func(request,id,*args,**kwargs)
 
             else:
-                return HttpResponse('You are not Authorized to view this page')
+                return HttpResponse('You are not Authorized to view this')
         return wrapper_func
 
     return decorator
