@@ -55,6 +55,7 @@ class Patient(models.Model):
     blood_group = models.CharField(null=True,blank=True,choices=blood_gr,max_length=20)
     med_reps = models.FileField(upload_to='files',null=True,blank=True)
     case_paper = models.CharField(max_length=10,null=True,blank=True)
+    pic = models.ImageField(null=True,blank=True)
 
     def __str__(self):
         return self.name
@@ -73,6 +74,7 @@ class Doctor(models.Model):
     attendance = models.CharField(max_length=30,null=True,blank=True)
     salary = models.CharField(max_length=30,null=True,blank=True)
     status = models.CharField(null=True,blank=True,choices=stat,max_length=20)
+    pic = models.ImageField(null=True,blank=True)
 
     def __str__(self):
         return self.name

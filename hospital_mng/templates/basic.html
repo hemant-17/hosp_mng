@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="{% static 'css/animate.css' %}">
 <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/all.min.css' %}">
 {% block head %} {% endblock %}
 
 </head>
@@ -87,6 +88,7 @@ controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navig
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/contact">Contact</a>
+
             {% if user.is_authenticated %}
 
 
@@ -104,7 +106,7 @@ controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navig
               <a class="nav-link mx-2" href="/Payment/{{ user.id }}">Invoice & Payments</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link mx-2" href="/profile/{{ user.id }}">Profile</a>
+                <a class="nav-link mx-2" href="/profile/{{ user.id }}"><i class="fas fa-2x fa-user-cog"></i></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link mx-2" href="/medical/{{ user.id }}">Medical history</a>
@@ -138,6 +140,7 @@ controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navig
             <li class="nav-item text-right">
                 <a class="nav-link mx-2 " href="/logout"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button></a>
               </li>
+
           </ul>
             {% else %}
 

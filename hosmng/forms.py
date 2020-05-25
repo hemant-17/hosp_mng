@@ -15,7 +15,7 @@ class ProfileForm(ModelForm):
 		super(ProfileForm, self).__init__(*args, **kwargs) # Call to ModelForm constructor
 		self.fields['address'].widget.attrs['style'] = 'width:400px; height:40px; margin-top:10px; margin-bottom:10px'
 		self.fields['name'].widget.attrs['style']  = 'width:250px; height:40px;margin-top:10px; margin-bottom:10px'
-		self.fields['email'].widget.attrs['style']  = 'width:250px; height:40px;margin-top:10px; margin-bottom:10px'
+		self.fields['email'].widget.attrs['style']  = 'width:300px; height:40px;margin-top:10px; margin-bottom:10px'
 
 class MedicalForm(ModelForm):
 		class Meta:
