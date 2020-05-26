@@ -89,6 +89,7 @@ controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navig
         <li class="nav-item">
             <a class="nav-link" href="/contact">Contact</a>
 
+
             {% if user.is_authenticated %}
 
 
@@ -105,12 +106,24 @@ controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navig
             <li class="nav-item">
               <a class="nav-link mx-2" href="/Payment/{{ user.id }}">Invoice & Payments</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link mx-2" href="/profile/{{ user.id }}"><i class="fas fa-2x fa-user-cog"></i></a>
-              </li>
+              </li> -->
+
               <li class="nav-item">
                 <a class="nav-link mx-2" href="/medical/{{ user.id }}">Medical history</a>
               </li>
+              <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-2x fa-user-cog"></i>
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="/profile/{{ user.id }}">Profile</a>
+                  <a class="dropdown-item" href="#">Change Password</a>
+                  <a class="dropdown-item" href="/logout">Logout</a>
+                </div>
+              </div>
 
 
 
@@ -162,6 +175,9 @@ controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navig
     <!-- header-end -->
 
      <!-- JS here -->
+     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
      <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
      <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
      <script src="{% static 'js/popper.min.js' %}"></script>
